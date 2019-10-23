@@ -1,3 +1,6 @@
+## Live demo 
+[Click here] (https://priceless-nightingale-6a68dd.netlify.com/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
