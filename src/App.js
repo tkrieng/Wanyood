@@ -3,14 +3,15 @@ import { isHoliday } from './holidays';
 import './App.css';
 
 const today = new Date()
-var tomorrow = new Date()
-const wanyood = isHoliday(today) ? 'เออ หยุด' : 'หยุดพ่อมึง'
+var tomorrow = new Date(today.toDateString())
+tomorrow.setDate(tomorrow.getDate() + 1)
+const wanyood = isHoliday(tomorrow) ? 'เออ หยุด' : 'หยุดพ่อมึง'
 
 function App() {
   return (
     <div className="App">
       <p className="question">
-        วันนี้หยุดปะ?
+        พรุ่งนี้หยุดปะ?
       </p>
       <p className="answer">
         {wanyood}
