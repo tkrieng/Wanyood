@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const holidays =
     [
         "2019-01-01"
@@ -37,9 +39,9 @@ const holidays =
         , "2020-12-31"
     ]
 
-const formattedHolidays = new Set(holidays.map((holiday) => Date.parse(holiday)))
+const formattedHolidays = new Set(holidays.map((holiday) => (new Date(Date.parse(holiday))).toDateString()))
 export const isHoliday = (today, formattedHolidays) => {
-    return formattedHolidays.has(today)
+    return formattedHolidays.has(today.toDateString())
 }
 
 export default formattedHolidays
