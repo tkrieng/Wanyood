@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Header, ThemeProvider, Button } from 'react-native-elements'
 import * as Font from 'expo-font';
-import { isHoliday } from './src/holidays';
+import { isHoliday, toThaiDate } from './src/holidays';
 
 const Main = ({today}) => {
   var tomorrow = new Date(today.toDateString())
@@ -26,7 +26,7 @@ const Main = ({today}) => {
         }}
       />
       <View style={styles.container}>
-        <Text style={styles.normalText}>{today.toLocaleString()}</Text>
+        <Text style={styles.normalText}>{toThaiDate(today)}</Text>
         <Text style={styles.title}>
           พรุ่งนี้หยุดปะ?
         </Text>

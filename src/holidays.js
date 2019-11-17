@@ -36,10 +36,32 @@ const holidays =
         , "2020-12-10"
         , "2020-12-31"
     ]
+const displayDay = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์']
+const displayMonth = [
+    'มกราคม',
+    'กุมภาพันธ์',
+    'มีนาคม',
+    'เมษายน',
+    'พฤษภาคม',
+    'มิถุนายน',
+    'กรกฎาคม',
+    'สิงหาคม',
+    'กันยายน',
+    'ตุลาคม',
+    'พฤศจิกายน',
+    'ธันวาคม',
+]
 
 export const formattedHolidays = new Set(holidays.map((holiday) => (new Date(Date.parse(holiday))).toDateString()))
 export const _isHoliday = (today, formattedHolidays) => {
     return formattedHolidays.has(today.toDateString())
 }
-
 export const isHoliday = (today) => _isHoliday(today, formattedHolidays)
+export const toThaiDate = (date) => {
+    const day = date.getDay()
+    const dd = date.getDate()
+    const month = date.getMonth()
+    const year = date.getYear() + 1900
+    const time = date.toLocaleTimeString()
+    return `วัน${displayDay[day]} ${dd} ${displayMonth[month]} ${year} ${time}`
+}
