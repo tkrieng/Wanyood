@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Header, ThemeProvider, Button } from 'react-native-elements'
 import * as Font from 'expo-font';
-import { isHoliday } from './holidays';
+import { isHoliday } from './src/holidays';
 
 const Main = () => {
   const today = new Date()
