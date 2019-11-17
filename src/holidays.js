@@ -65,3 +65,20 @@ export const toThaiDate = (date) => {
     const time = date.toLocaleTimeString()
     return `วัน${displayDay[day]} ${dd} ${displayMonth[month]} ${year} ${time}`
 }
+export const _getNextHoliday = (date, holidays) => {
+    const nextHolidays = Array.from(holidays).map(d => new Date(Date.parse(d))).filter(h => date < h)
+    if(nextHolidays.length == 0) return null
+    return nextHolidays[0]
+}
+export const getNextHoliday = (date) => _getNextHoliday(date, holidays)
+export const countDaysUntilDate = (startDay, endDay) => {
+    const oneDay = 1000 * 60 * 60 * 24 
+    if (startDay.getMonth() == 11 && startDay.getdate() > 25) 
+    endDay.setFullYear(endDay.getFullYear() + 1) 
+    const Result = Math.round(endDay.getTime() - startDay.getTime()) / (oneDay); 
+    return Result.toFixed(0)
+}
+export const countDaysUntilNextHoliday = (today) => {
+    const nextHoliday = getNextHoliday(today)
+    return countDaysUntilDate(today, nextHoliday)
+}

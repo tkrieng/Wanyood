@@ -1,4 +1,4 @@
-import { _isHoliday, toThaiDate } from './holidays';
+import { _isHoliday, toThaiDate, _getNextHoliday } from './holidays';
 
 const holidays = new Set([Date.parse("2019-10-23"), Date.parse("2019-10-30")].map(d => (new Date(d)).toDateString()))
 
@@ -37,5 +37,13 @@ describe('toThaiDate', () => {
             expect(toThaiDate(today)).toBe(testCase.displayText)
         })
     })
+})
 
+describe('_getNextHoliday', () => {
+    const holidays = ['2019-11-12', '2019-12-12']
+    const today = new Date(Date.parse('2019-11-23T22:00:00'))
+    const nextHoliday = new Date(Date.parse('2019-12-12'))
+    it('return 2019-12-12 as next holiday', () => {
+        expect(_getNextHoliday(today, holidays)).toEqual(nextHoliday)
+    })
 })

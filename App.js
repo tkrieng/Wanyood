@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Header, ThemeProvider, Button } from 'react-native-elements'
 import * as Font from 'expo-font';
-import { isHoliday, toThaiDate } from './src/holidays';
+import { isHoliday, toThaiDate, countDaysUntilNextHoliday } from './src/holidays';
 
 const Main = ({today}) => {
   var tomorrow = new Date(today.toDateString())
@@ -34,7 +34,7 @@ const Main = ({today}) => {
           {wanyood}
         </Text>
         <Text style={styles.content}>หยุดอีกทีนู่นเลย..</Text>
-        <Text style={styles.content}>วันปีใหม่ อีก 16 วัน</Text>
+        <Text style={styles.content}>วันปีใหม่ อีก {countDaysUntilNextHoliday(today)} วัน</Text>
         <Button
           title='+เพิ่มลงปฏิทิน'
           type='clear'
