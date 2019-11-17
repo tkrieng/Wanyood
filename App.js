@@ -4,8 +4,7 @@ import { Header, ThemeProvider, Button } from 'react-native-elements'
 import * as Font from 'expo-font';
 import { isHoliday } from './src/holidays';
 
-const Main = () => {
-  const today = new Date()
+const Main = ({today}) => {
   var tomorrow = new Date(today.toDateString())
   tomorrow.setDate(tomorrow.getDate() + 1)
   const wanyood = isHoliday(tomorrow) ? 'เออ หยุด' : 'หยุดพ่อมึง'
@@ -27,7 +26,7 @@ const Main = () => {
         }}
       />
       <View style={styles.container}>
-        <Text style={styles.normalText}>วันอังคารที่ 20 สิงหาคม 2019</Text>
+        <Text style={styles.normalText}>{today.toLocaleString()}</Text>
         <Text style={styles.title}>
           พรุ่งนี้หยุดปะ?
         </Text>
@@ -49,6 +48,7 @@ const Main = () => {
 export default class App extends React.Component {
   state = {
     fontLoaded: false,
+    today: new Date()
   };
 
   async componentDidMount() {
@@ -59,12 +59,17 @@ export default class App extends React.Component {
     });
 
     this.setState({ fontLoaded: true });
+    setInterval( () => {
+      this.setState({
+        today : new Date()
+      })
+    },1000)
   }
 
   render() {
     if(this.state.fontLoaded)
       return (
-        <Main/>
+        <Main today={this.state.today}/>
       );
     return null
   }
