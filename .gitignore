@@ -24,3 +24,17 @@ yarn-error.log*
 
 # audio
 *.aiff
+
+#expo
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+web-report/
+.DS_Store
